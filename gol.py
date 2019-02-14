@@ -1,3 +1,4 @@
+from cell import *
 import random
 
 def setup_game(size,max_alive):
@@ -7,10 +8,12 @@ def setup_game(size,max_alive):
 
 def get_empty_grid(size):
     new_grid = []
-    for row in range(size):
+    for r_i in range(size):
         new_sublist = []
-        for column in range(size):
-            new_sublist.append('-')
+        for c_i in range(size):
+            # new_sublist.append('-')
+            a_new_cell = Cell(r_i,c_i)
+            new_sublist.append(a_new_cell)
         new_grid.append(new_sublist)
     return new_grid
 
@@ -46,6 +49,6 @@ def print_grid(a_grid):
     size = len(a_grid)
     for r_i in range(size):
         for c_i in range(size):
-            print(a_grid[r_i][c_i],end="")
+            a_cell = a_grid[r_i][c_i]
+            a_cell.print_myself()
         print("")
-
