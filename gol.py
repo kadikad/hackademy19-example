@@ -52,6 +52,40 @@ def print_grid(a_grid):
             a_cell.print_myself()
         print("")
 
+
+def find_all_neigh(a_grid):#for each cell find all their neighbours 
+    size = len(a_grid)
+    for r_i in range(size):
+        for c_i in range(size):
+            a_cell = a_grid[r_i][c_i]
+            a_cell.find_neigh(a_grid)
+
+
+def compute_all_ni(a_grid):#for each cell find all their neighbours 
+    size = len(a_grid)
+    for r_i in range(size):
+        for c_i in range(size):
+            a_cell = a_grid[r_i][c_i]
+            a_cell.compute_next_iteration()
+
+
+
+def evolve_all(a_grid):#for each cell find all their neighbours 
+    size = len(a_grid)
+    for r_i in range(size):
+        for c_i in range(size):
+            a_cell = a_grid[r_i][c_i]
+            a_cell.evolve()
+
+    
 grid=get_empty_grid(5)
+find_all_neigh(grid)
 fill_grid_random(grid,10)
 print_grid(grid)
+print("****************")
+compute_all_ni(grid)
+evolve_all(grid)
+print_grid(grid)
+
+
+

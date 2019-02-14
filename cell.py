@@ -2,6 +2,7 @@ class Cell():
 
     def __init__(self, a_row_i, a_col_i):
         self.current_state = '-' #'-' determines that cell is dead
+        self.next_state = 'x'
         self.r_i = a_row_i
         self.c_i = a_col_i
     
@@ -35,4 +36,41 @@ class Cell():
 
     def make_alive(self):
         self.current_state = 'x'
+
+# overall cell has following information:
+# (r_i),(c_i),(neigh),(current_state)
+# next step: compute_nest_states():
+    #each_n.are_you_alive
+        #...
+
+#true alive 
+#false not
+
+    def is_alive(self):
+        if self.current_state == 'x': # is it the same?
+            return True
+        else:
+            return False
+
+    def compute_next_iteration(self):
+        alive_ne = 0 #ne = neighbours
+        for ne in self.neigh:
+            if ne.is_alive() == True: #if ne in is_alive(self) is equal to True
+                alive_ne = alive_ne + 1
+
+        if self.is_alive()==True:
+            if (alive_ne == 2 or alive_ne == 3):
+                self.next_state = 'x' #I am alive and I remain alive
+            else:
+                self.next_state = '-' #I die, either of solitude or of noise 
+        else:
+            if alive_ne == 3:
+                self.next_state = 'x' #I resurrect from my ahes
+            else:
+                self.next_state = '-' #I was dead and I remain dead
+
+        
+    def evolve(self):
+        self.current_state = self.next_state
+
 
