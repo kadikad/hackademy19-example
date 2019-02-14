@@ -1,7 +1,7 @@
 class Cell():
 
     def __init__(self, a_row_i, a_col_i):
-        self.current_state = '-'
+        self.current_state = '-' #'-' determines that cell is dead
         self.r_i = a_row_i
         self.c_i = a_col_i
     
@@ -32,4 +32,7 @@ class Cell():
             if c < max_size_0:
                 neighbours.append(a_grid[r+1][c+1])
         self.neigh = neighbours
+
+    def make_alive(self):
+        self.current_state = 'x'
 
